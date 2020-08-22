@@ -1,3 +1,4 @@
+from core.Series import Series
 
 ERROR_NO_001 = 'カラム名は文字列で指定してください。'
 
@@ -16,13 +17,9 @@ class DataFrame:
             if not isinstance(data, dict):
                 data = vars(data)
 
-            diffs = list(set(data.keys()) - set(self.__columns))
-
-            if len(diffs):
-
-                for diff in diffs:
-                    values[diff] = [None] * count
-                    self.__columns.append(diff)
+            for new_column in list(set(data.keys()) - set(self.__columns)):
+                values[new_column] = [None] * count
+                self.__columns.append(new_column)
 
             for column in self.__columns:
                 values[column].append(data.get(column))
@@ -46,15 +43,6 @@ class DataFrame:
             return {column: get_column_data(column) for column in columns}
         else:
             raise Exception(ERROR_NO_001)
-
-    def __repr__(self):
-        return '{}'.format(self.__values)
-
-
-class Series:
-
-    def __init__(self, values):
-        self.__values = values
 
     def __repr__(self):
         return '{}'.format(self.__values)
