@@ -6,9 +6,10 @@ class DataFrame:
 
     def __init__(self, data_list):
 
-        self.__values = {}
         self.__columns = []
-        self.__len = 0
+
+        values = {}
+        count = 0
 
         for data in data_list:
 
@@ -20,41 +21,40 @@ class DataFrame:
             if len(diffs):
 
                 for diff in diffs:
-                    self.__values[diff] = Series(self.__len)
+                    values[diff] = [None] * count
                     self.__columns.append(diff)
 
             for column in self.__columns:
-                self.__values[column].append(data.get(column))
+                values[column].append(data.get(column))
 
-            self.__len += 1
+            count += 1
+
+        self.__values = {key: Series(value) for key, value in values.items()}
 
     def __getitem__(self, columns):
 
+        def get_column_data(column):
+
+            if not isinstance(column, str):
+                raise Exception(ERROR_NO_001)
+
+            return self.__values[column]
+
         if isinstance(columns, str):
-            return self.__get_column_data(columns)
+            return get_column_data(columns)
         elif isinstance(columns, list):
-            return {column: self.__get_column_data(column) for column in columns}
+            return {column: get_column_data(column) for column in columns}
         else:
             raise Exception(ERROR_NO_001)
 
     def __repr__(self):
         return '{}'.format(self.__values)
 
-    def __get_column_data(self, column):
-
-        if not isinstance(column, str):
-            raise Exception(ERROR_NO_001)
-
-        return self.__values[column]
-
 
 class Series:
 
-    def __init__(self, count):
-        self.__values = [None] * count
-
-    def append(self, data):
-        self.__values.append(data)
+    def __init__(self, values):
+        self.__values = values
 
     def __repr__(self):
         return '{}'.format(self.__values)
