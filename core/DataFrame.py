@@ -44,6 +44,10 @@ class DataFrame:
         else:
             raise Exception(ERROR_NO_001)
 
+    def __setitem__(self, new_column, values):
+        self.__columns.append(new_column)
+        self.__values[new_column] = values
+
     def __repr__(self):
         return '{}'.format(self.__values)
 

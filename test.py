@@ -21,4 +21,7 @@ print(df)
 target = ['group_name']
 print(df[target])
 
-print(df['user_name'] + df['email'])
+df['new'] = df['user_name'] + df['email']
+print(df['new'])
+
+print(df)
