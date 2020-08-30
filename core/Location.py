@@ -27,7 +27,7 @@ class Location:
         if isinstance(rows, int):
             return self.__to_series(self.__get_row_data(rows))
         elif isinstance(rows, list):
-            return self.__to_data_frame({row: list(self.__get_row_data(row).values()) for row in rows})
+            return self.__to_data_frame([self.__get_row_data(row) for row in rows])
         else:
             raise Exception(ERROR_MESSAGE_NO_001)
 
