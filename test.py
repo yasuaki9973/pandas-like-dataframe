@@ -1,4 +1,5 @@
 from core.DataFrame import DataFrame
+from core.Series import Series
 import random
 
 
@@ -16,12 +17,8 @@ values = [
 
 
 df = DataFrame(values)
-print(df)
-
-target = ['group_name']
-print(df[target])
-
-df['new'] = df['user_name'] + df['email']
-print(df['new'])
 
 print(df)
+
+print(df.to_dict('records'))
+
