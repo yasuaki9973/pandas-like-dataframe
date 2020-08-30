@@ -39,9 +39,13 @@ class DataFrame:
             if not isinstance(data, dict):
                 data = vars(data)
 
-            for new_column in list(set(data.keys()) - set(self.__columns)):
-                values[new_column] = [None] * count
-                self.__columns.append(new_column)
+            new_columns = list(set(data.keys()) - set(self.__columns))
+
+            for column in list(data.keys()):
+
+                if column in new_columns:
+                    values[column] = [None] * count
+                    self.__columns.append(column)
 
             for column in self.__columns:
                 values[column].append(data.get(column))

@@ -18,7 +18,7 @@ values = [
 
 df = DataFrame(values)
 
-print(df)
+print(df.loc[2])
 
 print(df.to_dict('records'))
 
