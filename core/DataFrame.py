@@ -57,7 +57,8 @@ class DataFrame:
 
     def __init_from_dict(self, data_list):
         self.__values = data_list
-        count = len(data_list[list(data_list.keys())[0]])
+        self.__columns = list(data_list.keys())
+        count = len(data_list[self.__columns[0]])
         self.__index = Index(count)
 
     def __get_column_data(self, column):
