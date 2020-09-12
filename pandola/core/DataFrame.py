@@ -1,7 +1,7 @@
-from core.Series import Series
-from core.Index import Index
-from core.Location import Location
-from util.message import ERROR_MESSAGE_NO_001
+from pandola.core.Series import Series
+from pandola.core.Index import Index
+from pandola.core.Location import Location
+from pandola.util.message import ERROR_MESSAGE_NO_001
 
 
 class DataFrame:

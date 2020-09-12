@@ -1,4 +1,4 @@
-from util.message import ERROR_MESSAGE_NO_001
+from pandola.util.message import ERROR_MESSAGE_NO_001
 
 
 class Index:

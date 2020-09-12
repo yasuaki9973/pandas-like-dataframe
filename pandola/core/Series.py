@@ -1,5 +1,5 @@
-from core.Index import Index
-from util.message import ERROR_MESSAGE_NO_001
+from pandola.core.Index import Index
+from pandola.util.message import ERROR_MESSAGE_NO_001
 
 
 class Series:

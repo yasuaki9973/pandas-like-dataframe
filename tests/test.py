@@ -1,7 +1,13 @@
-from core.DataFrame import DataFrame
-from core.Series import Series
-import random
 
+# TODO
+import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+
+import random
+import pandola as pd
 
 values = [
 
@@ -16,7 +22,7 @@ values = [
 ]
 
 
-df = DataFrame(values)
+df = pd.DataFrame(values)
 
 print(df.loc[2])
 
